@@ -36,7 +36,7 @@ jobs:
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
           # Copy build directory to server using SCP
-          scp -r ./out/* $USERNAME@$HOST:$TARGET_DIRECTORY
+          scp -r .next/* $USERNAME@$HOST:$TARGET_DIRECTORY
 
       - name: Execute remote commands
         run: |
