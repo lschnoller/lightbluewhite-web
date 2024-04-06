@@ -25,7 +25,7 @@ jobs:
 
     - name: Deploy to AWS Lightsail
       uses: easingthemes/ssh-deploy@v2.1.5
-      env:
+      with:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: "-avzr --delete"
         SOURCE: ".next/"
