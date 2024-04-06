@@ -1,4 +1,4 @@
-name: Deploy Next.js App
+name: Deploy Next.js App Using SCP and SSH
 
 on:
   push:
@@ -6,40 +6,50 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Adjust as necessary
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Build
+        run: |
+          npm install
+          npm run build # Or `next export` for a static site
 
-    - name: Build
-      run: npm run build
-
-    - name: Deploy to AWS Lightsail
-      uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: "-avzr --delete"
-        SOURCE: ".next/"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.TARGET }}
-
-    - name: Restart Next.js app with PM2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd ${{ secrets.TARGET }}
-          pm2 restart all
+      - name: Copy build artifacts to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          TARGET_DIRECTORY: ${{ secrets.TARGET_DIRECTORY }}
+        run: |
+          # Setup SSH Agent
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
+          # Copy build directory to server using SCP
+          scp -r ./out/* $USERNAME@$HOST:$TARGET_DIRECTORY
+
+      - name: Execute remote commands
+        run: |
+          ssh -i ~/.ssh/id_rsa $USERNAME@$HOST << EOF
+            # Navigate to the target directory
+            cd $TARGET_DIRECTORY
+            
+            # Example commands to execute
+            npm install --production
+            pm2 restart all # Or any other command to start your app
+          EOF
+
+      - name: Cleanup SSH Keys
+        if: always()
+        run: |
+          rm -f ~/.ssh/id_rsa
