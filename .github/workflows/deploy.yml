@@ -42,4 +42,3 @@ jobs:
         script: |
           cd ${{ secrets.TARGET }}
           pm2 restart all
-          
