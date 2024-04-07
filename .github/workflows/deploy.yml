@@ -36,7 +36,7 @@ jobs:
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
           # Copy build directory to server using SCP
-          scp -r .next/* $USERNAME@$HOST:$TARGET_DIRECTORY
+          scp -r .next public package.json package-lock.json next.config.js $USERNAME@$HOST:$TARGET_DIRECTORY
 
       - name: Execute remote commands
         env:
@@ -51,9 +51,14 @@ jobs:
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
           ssh -i ~/.ssh/id_rsa $USERNAME@$HOST << EOF
-            # Navigate to the target directory
-            cd $TARGET_DIRECTORY
-            
+            # Stop server
+            pm2 stop lbw
+            # Remove old distribution
+            rm lbw
+            mkdir lbw
+            # move temp files into the directory
+            mv temp/* lbw
+            cd lbw
             # Assuming you're using PM2 to manage your Node applications; adjust as needed
             pm2 restart lbw || pm2 start npm --name "lbw" -- start
           EOF
