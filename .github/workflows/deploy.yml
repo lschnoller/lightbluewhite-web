@@ -57,8 +57,9 @@ jobs:
             rm -rf lbw
             mkdir lbw
             # move temp files into the directory
-            cp temp/* lbw
+            mv temp lbw
             cd lbw
+            npm install
             # Assuming you're using PM2 to manage your Node applications; adjust as needed
             pm2 restart lbw || pm2 start npm --name "lbw" -- start
           EOF
