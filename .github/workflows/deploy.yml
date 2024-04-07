@@ -36,7 +36,7 @@ jobs:
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
           # Copy build directory to server using SCP
-          scp -r .next public package.json package-lock.json next.config.js $USERNAME@$HOST:$TARGET_DIRECTORY
+          scp -r .next public package.json package-lock.json $USERNAME@$HOST:$TARGET_DIRECTORY
 
       - name: Execute remote commands
         env:
