@@ -51,7 +51,7 @@ jobs:
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
           ssh -i ~/.ssh/id_rsa $USERNAME@$HOST << EOF
-            # Remove old distribution
+            # Remove old distribution 
             rm -rf lbw
             # move temp files into the directory
             mv temp lbw
