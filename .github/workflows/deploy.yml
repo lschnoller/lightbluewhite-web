@@ -39,7 +39,17 @@ jobs:
           scp -r .next/* $USERNAME@$HOST:$TARGET_DIRECTORY
 
       - name: Execute remote commands
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
         run: |
+          # Setup SSH Agent
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+          
           ssh -i ~/.ssh/id_rsa $USERNAME@$HOST << EOF
             # Navigate to the target directory
             cd $TARGET_DIRECTORY
