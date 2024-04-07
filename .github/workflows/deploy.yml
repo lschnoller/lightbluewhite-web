@@ -1,4 +1,4 @@
-name: Deploy Next.js App Using SCP and SSH
+name: Deploy to Lightsail Prod
 
 on:
   push:
@@ -54,10 +54,10 @@ jobs:
             # Stop server
             pm2 stop lbw
             # Remove old distribution
-            rm lbw
+            rm -rf lbw
             mkdir lbw
             # move temp files into the directory
-            mv temp/* lbw
+            cp temp/* lbw
             cd lbw
             # Assuming you're using PM2 to manage your Node applications; adjust as needed
             pm2 restart lbw || pm2 start npm --name "lbw" -- start
