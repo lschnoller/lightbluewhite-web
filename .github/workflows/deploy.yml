@@ -54,9 +54,8 @@ jobs:
             # Navigate to the target directory
             cd $TARGET_DIRECTORY
             
-            # Example commands to execute
-            npm install --production
-            pm2 restart all # Or any other command to start your app
+            # Assuming you're using PM2 to manage your Node applications; adjust as needed
+            pm2 restart lbw || pm2 start npm --name "lbw" -- start
           EOF
 
       - name: Cleanup SSH Keys
