@@ -55,11 +55,11 @@ jobs:
             rm -rf lbw
             # move temp files into the directory
             mv temp lbw
+            mkdir temp
             cd lbw
             npm install
             # Assuming you're using PM2 to manage your Node applications; adjust as needed
             pm2 restart lbw || pm2 start npm --name "lbw" -- start
-            mkdir temp
           EOF
 
       - name: Cleanup SSH Keys
