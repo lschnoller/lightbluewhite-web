@@ -1,72 +1,133 @@
+'use client'
+import Head from 'next/head';
 import Image from "next/image";
+import { Row, Col, Button } from 'antd';
+//import { AiOutlineRocket, AiOutlineDatabase, AiOutlineSetting, AiOutlineDeploymentUnit, AiOutlineCarryOut } from 'react-icons/ai';
+import * as AiIcons from 'react-icons/ai';
+//import Icon from '@ant-design/icons';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="w-full min-h-screen mx-auto bg-gradient-to-br from-sky-blue-light to-sky-blue-dark ">
+      <Head>
+        <title>Light Blue White | Empowering Innovation with Custom LLMs</title>
+        <meta name="description" content="Unlock the power of your data and unleash innovation with custom large language models (LLMs) from Light Blue White." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <header className="flex justify-between items-center px-10 py-4">
+
+        <div className="relative md:hidden">
+          <Image
+            src="/lbw-logo-horizontal-2.svg"
+            alt="Light Blue White Logo"
+            width={200}
+            height={70}
+            priority
+          />
+        </div>
+        <div className="relative hidden md:block 2xl:hidden">
+          <Image
+            src="/lbw-logo-horizontal-2.svg"
+            alt="Light Blue White Logo"
+            width={300}
+            height={70}
+            priority
+          />
+        </div>
+        <div className="relative hidden 2xl:block">
+          <Image
+            src="/lbw-logo-horizontal.svg"
+            alt="Light Blue White Logo"
+            width={350}
+            height={70}
+            priority
+          />
+        </div>
+        <nav>
+          <ul className="flex gap-5">
+            <li>
+              <a href="#services" className="text-white">Services</a>
+            </li>
+            <li>
+              <a href="#" className="text-white">About</a>
+            </li>
+            <li>
+              <a href="https://calendly.com/lschnoller/free-consultation" className="text-white">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main className="flex flex-col min-h-screen justify-center items-center md:px-40 px-20 pt-40 2xl:pt-40">
+        <section className="mb-20 2xl:mb-32">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 3 }}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            About Us
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            We are a leading AI consulting company with a mission to help businesses leverage the power of artificial intelligence.
-          </p>
-        </div>
-
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Our Services
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            We provide a range of services including AI strategy, machine learning development, and data science consulting.
-          </p>
-        </div>
-
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Contact Us
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Get in touch with us to learn how we can help your business harness the power of AI.
-          </p>
-        </div>
-      </div>
-    </main>
+            <h1 className="text-3xl 2xl:text-4xl font-bold text-center text-white mb-7">
+              Unlock the Power of Your Data. Unleash Innovation with Custom LLMs.
+            </h1>
+            <p className="text-xl text-center text-gray-200 mb-20">
+              Light Blue White empowers businesses with LLM and AI solutions that unlock hidden potential.
+            </p>
+            <div className='mx-auto block text-center'>
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded-full">
+                <a href="https://calendly.com/lschnoller/free-consultation">Get Free Consultation</a>
+              </button>
+            </div>
+          </motion.div>
+        </section>
+        <section id="services" className="mt-30 mb-16 max-w-7xl">
+          {/* <h2 className="text-2xl font-semibold text-center text-white mb-8">Our Key Services</h2> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineDeploymentUnit className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">On-premise LLM Deployment</h3>
+              <p className="text-gray-300 text-center leading-snug">
+                Empower your business ensuring your data remains securely within your own infrastructure.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineDatabase className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">Open-Source LLM Expertise</h3>
+              <p className="text-gray-300 text-center">
+                Leverage expertise in cutting-edge open-source LLMs to deliver private & cost-effective solutions.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineSetting className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">LLM with Granular Access Control</h3>
+              <p className="text-gray-300 text-center">
+                Tailor the LLM for each user enforcing granular access controls (ACLs) to your data to meet compliance needs.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineCarryOut className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">End-to-End LLM Deployment</h3>
+              <p className="text-gray-300 text-center">
+                Employ LLM best practices, from data collection to LLM deployment and ongoing maintenance.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineSafety className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">Compliant LLM Fine-Tuning</h3>
+              <p className="text-gray-300 text-center">
+                Fine-tune your custom LLM on anonymized data, unlocking valuable insights while complying with data privacy regulations.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <AiIcons.AiOutlineRocket className="text-4xl text-white mb-4" />
+              <h3 className="text-lg font-medium text-white mb-2 text-center">Scalable RAG Infrastructure</h3>
+              <p className="text-gray-300 text-center">
+                Build highly scalable RAG infrastructure that adapts and grows alongside your data volume and evolving business needs.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
