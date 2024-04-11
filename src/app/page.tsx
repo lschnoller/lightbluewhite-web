@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen mx-auto bg-gradient-to-br from-sky-blue-light to-sky-blue-dark ">
+    <div className="w-full min-h-screen mx-auto bg-gradient-to-br from-sky-blue-light to-sky-blue-dark">
       <Head>
         <title>Light Blue White | Empowering Innovation with Custom LLMs</title>
         <meta name="description" content="Unlock the power of your data and unleash innovation with custom large language models (LLMs) from Light Blue White." />
@@ -60,7 +60,7 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col min-h-screen justify-center items-center md:px-40 px-20 pt-40 2xl:pt-40">
-        <section className="mb-20 2xl:mb-32">
+        <section className="mb-28 2xl:mb-40">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -80,7 +80,7 @@ export default function Home() {
             </div>
           </motion.div>
         </section>
-        <section id="services" className="mt-30 mb-16 max-w-7xl">
+        <section id="services" className="mt-30 mb-56 max-w-7xl">
           {/* <h2 className="text-2xl font-semibold text-center text-white mb-8">Our Key Services</h2> */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
             <div className="flex flex-col items-center">
@@ -128,6 +128,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer>
+
+      </footer>
     </div>
   );
 }

@@ -14,9 +14,11 @@ module.exports = {
       height: {
         '35': '35px',
         '70': '70px',
-      }
+      },
+      scrollBehavior: ['smooth']
     }
   },
-  plugins: []
+  plugins: [
+  ]
 }
 
