@@ -47,13 +47,13 @@ export default function Home() {
         <nav>
           <ul className="flex gap-5">
             <li>
-              <a href="#services" className="text-white">Services</a>
+              <a href="#services" className="text-white hover:underline">Services</a>
             </li>
             <li>
-              <a href="#" className="text-white">About</a>
+              <a href="#" className="text-white hover:underline">About</a>
             </li>
             <li>
-              <a href="https://calendly.com/lschnoller/free-consultation" className="text-white">Contact</a>
+              <a href="https://calendly.com/lschnoller/free-consultation" className="text-white hover:underline">Contact</a>
             </li>
           </ul>
         </nav>
@@ -74,7 +74,7 @@ export default function Home() {
               Light Blue White empowers businesses with LLM and AI solutions that unlock hidden potential.
             </p>
             <div className='mx-auto block text-center'>
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full">
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-full">
                 <a href="https://calendly.com/lschnoller/free-consultation">Get Free Consultation</a>
               </button>
             </div>
