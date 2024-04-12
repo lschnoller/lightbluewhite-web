@@ -6,8 +6,24 @@ import { Row, Col, Button } from 'antd';
 import * as AiIcons from 'react-icons/ai';
 //import Icon from '@ant-design/icons';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setIsScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="w-full min-h-screen mx-auto bg-gradient-to-br from-sky-blue-light to-sky-blue-dark">
       <Head>
@@ -15,7 +31,7 @@ export default function Home() {
         <meta name="description" content="Unlock the power of your data and unleash innovation with custom large language models (LLMs) from Light Blue White." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="fixed top-0 w-full transition-all duration-200 flex justify-between items-center px-10 py-4">
+      <header className={`fixed top-0 w-full transition-all duration-200 flex justify-between items-center px-10 py-4 ${isScrolled ? 'bg-gray-800' : ''}`}>
 
         <div className="relative md:hidden">
           <Image
