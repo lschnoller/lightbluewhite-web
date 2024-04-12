@@ -31,7 +31,7 @@ export default function Home() {
         <meta name="description" content="Unlock the power of your data and unleash innovation with custom large language models (LLMs) from Light Blue White." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={`fixed top-0 w-full transition-all duration-200 flex justify-between items-center px-10 py-4 ${isScrolled ? 'bg-gray-800' : ''}`}>
+      <header className={`fixed top-0 w-full transition-all duration-500 flex justify-between items-center px-10 py-4 ${isScrolled ? 'bg-gray-800' : ''}`}>
 
         <div className="relative md:hidden">
           <Image
@@ -74,7 +74,8 @@ export default function Home() {
           </ul>
         </nav>
       </header>
-
+      {/* separator */}
+      <div className="h-16 md:h-20"></div>
       <main className="flex flex-col min-h-screen justify-center items-center md:px-40 px-20 pt-40 2xl:pt-40">
         <section className="mb-28 2xl:mb-40">
           <motion.div
