@@ -74,7 +74,7 @@ export default function Home() {
               Light Blue White empowers businesses with LLM and AI solutions that unlock hidden potential.
             </p>
             <div className='mx-auto block text-center'>
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded-full">
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full">
                 <a href="https://calendly.com/lschnoller/free-consultation">Get Free Consultation</a>
               </button>
             </div>
