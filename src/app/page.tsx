@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="description" content="Unlock the power of your data and unleash innovation with custom large language models (LLMs) from Light Blue White." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="flex justify-between items-center px-10 py-4">
+      <header className="fixed top-0 w-full transition-all duration-200 flex justify-between items-center px-10 py-4">
 
         <div className="relative md:hidden">
           <Image
